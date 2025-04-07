@@ -1,0 +1,46 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android" // Optional: only if you're using Kotlin plugins or code
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace "com.example.jewelry_billingsystem" // Corrected typo: 'jelwery' to 'jewelry'
+    compileSdk = 34
+    ndkVersion = flutter.ndkVersion
+
+    defaultConfig {
+        applicationId "com.example.jewelry_billingsystem"
+        minSdk = flutter.minSdkVersion
+        //noinspection OldTargetApi,EditedTargetSdkVersion
+        targetSdk = 34
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        multiDexEnabled true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug // Replace with real signing config for production
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+    implementation 'androidx.multidex:multidex:2.0.1'
+}
